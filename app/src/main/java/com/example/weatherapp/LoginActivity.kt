@@ -112,10 +112,26 @@ fun LoginPage(modifier: Modifier = Modifier) {
             ) {
                 Text("Login")
             }
+
             Button(
                 onClick = { email = ""; password = "" }
             ) {
                 Text("Limpar")
+            }
+
+            Button(
+                onClick = {
+                    activity.startActivity(
+                        Intent(
+                            activity,
+                            RegisterActivity::class.java
+                        ).setFlags(
+                            FLAG_ACTIVITY_SINGLE_TOP
+                        )
+                    )
+                }
+            ) {
+                Text("Cadastrar")
             }
         }
     }
