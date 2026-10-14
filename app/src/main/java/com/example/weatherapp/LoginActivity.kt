@@ -34,6 +34,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.ui.theme.WeatherAppTheme
+import com.example.weatherapp.ui.theme.DataField
+import com.example.weatherapp.ui.theme.PasswordField
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,40 +63,28 @@ fun LoginPage(modifier: Modifier = Modifier) {
     ) {
         val modifier = modifier.fillMaxWidth(fraction = 0.9f)
 
-
-
-
         Text(
             text = "Bem-vindo/a!",
             fontSize = 24.sp
         )
 
-
         Spacer(modifier = modifier.size(12.dp))
 
-
-        OutlinedTextField(
+        DataField(
+            label = "Digite seu e-mail",
             value = email,
-            label = { Text(text = "Digite seu e-mail") },
-            modifier = modifier,
             onValueChange = { email = it }
         )
 
-
         Spacer(modifier = modifier.size(12.dp))
 
-
-        OutlinedTextField(
+        PasswordField(
+            label = "Senha",
             value = password,
-            label = { Text(text = "Digite sua senha") },
-            modifier = modifier,
-            onValueChange = { password = it },
-            visualTransformation = PasswordVisualTransformation()
+            onValueChange = { password = it }
         )
 
-
         Spacer(modifier = modifier.size(12.dp))
-
 
         Row(
             modifier = modifier.padding(12.dp).fillMaxWidth(),
@@ -136,4 +126,3 @@ fun LoginPage(modifier: Modifier = Modifier) {
         }
     }
 }
-

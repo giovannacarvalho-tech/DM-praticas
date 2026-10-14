@@ -36,6 +36,8 @@ import androidx.compose.ui.unit.sp
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import com.example.weatherapp.ui.theme.DataField
+import com.example.weatherapp.ui.theme.PasswordField
 
 class RegisterActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,42 +74,34 @@ fun RegisterPage(modifier: Modifier = Modifier) {
 
         Spacer(modifier = modifier.size(8.dp))
 
-        OutlinedTextField(
+        DataField(
+            label = "Nome",
             value = userName,
-            label = { Text(text = "Nome") },
-            modifier = modifier,
-            onValueChange = { userName = it }
+            onValueChange = { userName = it}
         )
-
 
         Spacer(modifier = modifier.size(8.dp))
 
-        OutlinedTextField(
+        DataField(
+            label = "E-mail",
             value = email,
-            label = {Text("E-mail")},
-            onValueChange = {email = it},
-            modifier = Modifier.fillMaxWidth(0.9f)
+            onValueChange = { email = it }
         )
 
         Spacer(modifier = modifier.size(8.dp))
 
-        OutlinedTextField(
+        PasswordField(
+            label = "Senha",
             value = password,
-            label = { Text(text = "Senha") },
-            modifier = modifier,
             onValueChange = { password = it },
-            visualTransformation = PasswordVisualTransformation()
         )
-
 
         Spacer(modifier = modifier.size(8.dp))
 
-        OutlinedTextField(
+        PasswordField(
+            label = "Repita a senha",
             value = repeatPassword,
-            label = { Text(text = "Repita a senha") },
-            modifier = modifier,
             onValueChange = { repeatPassword = it },
-            visualTransformation = PasswordVisualTransformation()
         )
 
         Spacer(modifier = Modifier.size(8.dp))
