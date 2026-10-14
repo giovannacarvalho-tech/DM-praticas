@@ -57,8 +57,8 @@ class RegisterActivity : ComponentActivity() {
 fun RegisterPage(modifier: Modifier = Modifier) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
-    var userName by rememberSaveable() { mutableStateOf("")}
-    var repeatPassword by rememberSaveable() {mutableStateOf("") }
+    var userName by rememberSaveable { mutableStateOf("")}
+    var repeatPassword by rememberSaveable {mutableStateOf("") }
     val activity = LocalActivity.current as Activity
 
     Column(
