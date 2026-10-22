@@ -26,12 +26,15 @@ import com.example.weatherapp.ui.HomePage
 import com.example.weatherapp.ui.nav.BottomNavItem
 import com.example.weatherapp.ui.nav.BottomNavBar
 import com.example.weatherapp.ui.nav.MainNavHost
+import androidx.activity.viewModels
+import com.example.weatherapp.ui.MainViewModel
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val viewModel: MainViewModel by viewModels()
         setContent {
             val navController = rememberNavController()
             WeatherAppTheme {
@@ -65,7 +68,7 @@ class MainActivity : ComponentActivity() {
                     }
                 ) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        MainNavHost(navController = navController)
+                        MainNavHost(navController = navController, viewModel = viewModel)
                     }
                 }
             }
@@ -77,6 +80,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun HomePagePreview() {
     WeatherAppTheme {
-        HomePage()
+        HomePage(
+            viewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+        )
     }
 }

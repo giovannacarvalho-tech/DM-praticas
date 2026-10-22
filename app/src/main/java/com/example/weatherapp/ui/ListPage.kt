@@ -31,13 +31,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.weatherapp.ui.MainViewModel
 import com.example.weatherapp.model.City
 
 @Composable
-fun ListPage(modifier: Modifier = Modifier) {
-    val cityList = remember {
-        getCities().toMutableStateList()
-    }
+fun ListPage(modifier: Modifier = Modifier,
+             viewModel: MainViewModel
+             ) {
+    val cityList = viewModel.cities
     val activity = LocalActivity.current as? Activity
     LazyColumn(
         modifier = modifier
@@ -60,6 +61,7 @@ fun ListPage(modifier: Modifier = Modifier) {
                     }
                 },
                 onClose = {
+                    viewModel.remove(city)
                     activity?.let {
                         Toast.makeText(
                             it,
@@ -73,9 +75,7 @@ fun ListPage(modifier: Modifier = Modifier) {
     }
 }
 
-private fun getCities() = List(20) { i ->
-    City(name = "Cidade $i", weather = "Carregando clima...")
-}
+
 
 @Composable
 fun CityItem(

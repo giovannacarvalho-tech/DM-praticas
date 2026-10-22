@@ -23,7 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomePage(modifier: Modifier = Modifier) {
+fun HomePage(modifier: Modifier = Modifier,
+             viewModel: MainViewModel
+) {
 
     Column(
         modifier = modifier
